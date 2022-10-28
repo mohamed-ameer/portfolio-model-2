@@ -1,0 +1,500 @@
+/* general */
+:root{
+    --txt-color1:#302e4d;
+    --txt-color2:#ec1839;
+    --bg-color-body:#f2f2fc;
+    --bg-color-nav:#fdf9ff;
+}
+*{
+    box-sizing: border-box;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+html{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+} 
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+}
+::-webkit-scrollbar-thumb {
+    background: #6d6d6d; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--txt-color2); 
+}
+body{
+    margin: 0;
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+section{
+    background-color: var(--bg-color-body);
+    min-height: 100vh;
+    padding: 10px 5%;
+}
+.main-content{
+    padding-left: 270px;
+}
+/* loader */
+.preloader{
+    background-color:#222;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease;
+}
+.preloader.opacity-0{
+    opacity: 0;
+}
+.preloader .loader{
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--txt-color2);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin{
+    0%{transform: rotate(0deg);}    
+    100%{transform: rotate(360deg);}    
+}
+/* cursor */
+
+/* .cursor-1{
+    position: absolute;
+    top:0; left:0;
+    height:0.8rem; width:0.8rem;
+    background: var(--txt-color2);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 99999;
+}
+
+.cursor-1.active{
+    height:5rem;
+    width:5rem;
+    opacity: .3;
+}
+
+.cursor-2{
+    position: absolute;
+    top:0; left:0;
+    height:3rem; width:3rem;
+    border:.1rem solid var(--txt-color2);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 99999;
+    transition: .3s linear;
+}
+
+.cursor-2.active{
+    display: none;
+} */
+
+/* nav aside */
+aside{
+    width:270px;
+    background-color: var(--bg-color-nav);
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    border-right:1px solid #e8dfec;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+aside .logo{
+    padding: 30px 0;
+    position: relative;
+    
+}
+aside .logo a{
+    font-family: 'Rubik', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--txt-color1);
+    display: block;
+}
+aside .logo a::before{
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    width:20px;
+    height: 20px;
+    border-top:4px solid var(--txt-color2) ;
+    border-left:4px solid var(--txt-color2) ;
+}
+aside .logo a::after{
+    content: '';
+    position: absolute;
+    bottom:25px;
+    right: 25px;
+    width: 20px;
+    height: 20px;
+    border-bottom:4px solid var(--txt-color2) ;
+    border-right:4px solid var(--txt-color2) ;
+}
+
+
+aside .nav-toggler{
+    width: 45px;
+    height: 40px;
+    border:1px solid #e8dfec;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    left: 300px;
+    top: 20px;
+    background-color: #fdf9ff;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+aside .nav-toggler span{
+    display: inline-block;
+    height: 2px;
+    width: 20px;
+    background-color: var(--txt-color2);
+    position: relative;
+}
+aside .nav-toggler.open span{
+    background-color: transparent;
+}
+aside .nav-toggler span::after{
+    content: '';
+    height: 2px;
+    width: 20px;
+    background-color: var(--txt-color2);
+    position: absolute;
+    top: 6px;
+    left: 0;
+}
+aside .nav-toggler.open span::after{
+    transform: rotate(-45deg);
+    top: 0px;
+}
+aside .nav-toggler.open span::before{
+    transform: rotate(45deg);
+    top: 0px;
+}
+aside .nav-toggler span::before{
+    content: '';
+    height: 2px;
+    width: 20px;
+    background-color: var(--txt-color2);
+    position: absolute;
+    top: -6px;
+    left: 0;
+}
+aside .nav-menu{
+    margin: 50px 0;
+    padding: 0 20px;
+}
+aside .nav-menu li:hover{
+    cursor: pointer;
+
+}
+aside .nav-menu li a{
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--txt-color1);
+    line-height: 55px;
+    display: block;
+    border-bottom:1px solid #e8dfec;
+    transition: padding-left 0.3s ease,letter-spacing 0.3s ease;
+}
+aside .nav-menu li a:hover{
+    padding-left: 5px;
+    color: #ec1839;
+    letter-spacing: 2px;
+}
+.active{
+    color: #ec1839 !important;
+}
+/* home */
+#home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imgs/istanbul2.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+#home .cover{
+    position: absolute;
+    inset: 0;
+    background-color:rgba(0, 0, 0, 0.8);
+
+}
+#home .home-image{
+    width:250px;
+    height:250px;
+    border-radius: 50%;
+    background-image: url(../imgs/BETUL_KOSUMCU.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-bottom: 30px;
+    border: 8px solid #fff;
+}
+
+#home .home-info .intro{
+    font-weight: 700;
+    color: var(--txt-color2);
+}
+#home .home-info .major{
+    font-weight: 500;
+    color: #fff;
+    /* color: var(--txt-color1); */
+}
+#home .home-info .major .typing-effect{
+    font-weight: 700;
+    color: var(--txt-color2);
+}
+#home .home-info .social a span{
+    color: #fff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:35px;
+    height:35px;
+    border-radius: 50%;
+    margin-left: 7px;
+    background-color:var(--txt-color1);
+    transition: transform 0.3s;
+}
+#home .home-info .social a span:hover{
+    background-color:var(--txt-color2);
+    transform: scale(1.2);
+}
+#home .home-info .button{
+    display: inline-block;
+    background-color: var(--txt-color2);
+    color: #fdf9ff;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius:80px ;
+    transition:all 0.1s;
+}
+#home .home-info .button:hover{
+    color: #f2f2fc;
+    background-color: var(--txt-color1);
+    letter-spacing: 2px;    
+}
+/* about me */
+#about .section-title{
+    text-align: center;
+    padding: 20px 0;
+}
+#about .section-title h2{
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--txt-color1);
+}
+#about .section-title span{
+    color: var(--txt-color2);
+}
+
+#about .about-text p{
+    font-size: 17px;    
+    color:#504e70;
+    line-height:25px;
+}
+#about .about-text h3{
+    font-size: 20px;
+    margin: 20px 0;
+    color:var(--txt-color1);
+}
+#about .about-text .info{
+    gap:5px;
+}
+#about .about-text .info .box{
+    background:rgba(255, 255, 255, 0.7);
+    padding:20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+}
+#about .about-text .info .box p{
+    font-size: 17px;    
+    color:#504e70;
+}
+#about .about-text .info .box p span{
+    color: var(--txt-color2);
+    font-weight: 500;
+    
+}
+#about .about-text .skills{
+    display: flex;
+    flex-wrap: wrap;
+}
+#about .about-text .skills .skill-item{
+    background-color:var(--txt-color1) ;
+    border: 1px solid var(--bg-color-nav);
+    padding: 10px 20px;
+    margin: 0 10px 10px 0;
+    border-radius: 40px;
+    color: var(--bg-color-body);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#about .about-text .about-tabs{
+    margin-top: 20px;
+}
+#about .about-text .about-tabs .tab-item{
+   padding: 2px 0; 
+   background-color: transparent;
+   border: none;
+   text-transform: capitalize; 
+   display: inline-block;
+   color: var(--txt-color1);
+   font-size: 20px;
+   cursor: pointer;
+   font-weight: 500;
+   margin:0 30px 0 0;
+   position: relative;
+   opacity: 0.5;
+   transition: all 0.3s ease;
+}
+#about .about-text .about-tabs .tab-item:last-child{
+    margin: 0;
+} 
+#about .about-text .about-tabs .tab-item::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 1px;
+    background-color: var(--txt-color1);
+    transition: width 0.3s ease;
+}  
+#about .about-text .about-tabs .tab-item:hover::before{
+    width: 100%;
+} 
+#about .about-text .about-tabs .tab-item.active-tab::before{
+    width: 100%;
+    background-color: var(--txt-color2);    
+} 
+#about .about-text .about-tabs .tab-item.active-tab{
+    color: var(--txt-color2);
+    opacity: 1;
+    cursor: auto;
+}
+#about .about-text .timeline{
+    position: relative;
+}
+#about .about-text .timeline::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background-color: var(--txt-color2);
+    top: 0;
+    left: 5px;
+} 
+#about .about-text .tab-content{
+    padding: 40px 0;
+    display: none;
+}
+#about .about-text .tab-content.active-tab2{
+    display: block;
+}
+#about .about-text .timeline-item{
+   margin-bottom: 30px; 
+   position: relative;
+   padding: 10px 0 0 40px;
+}
+#about .about-text .timeline-item::before{
+    content: '';
+    position: absolute;
+    height: 11px;
+    width: 11px;
+    background-color: var(--txt-color2);
+    border-radius: 50%;
+    top: 16px;
+    left: 0;    
+}
+#about .about-text .timeline-item:last-child{
+    margin-bottom: 0;
+}
+#about .about-text .timeline-item .date{
+    display: block;
+    color: var(--txt-color2);
+    font-weight: 400;
+    margin: 0 0 10px;
+}
+#about .about-text .timeline-item h4{
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+#about .about-text .timeline-item h4 span{
+    font-weight: 400;
+}
+
+/* services */
+#services .section-title{
+    text-align: center;
+    padding: 20px 0;
+}
+#services .section-title h2{
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--txt-color1);
+}
+#services .section-title span{
+    color: var(--txt-color2);
+}
+/* responsive */
+@media (max-width:1199px) {
+    aside{
+        left: -272px;
+    }
+    .main-content{
+        padding-left:0;
+    }
+    aside .nav-toggler{
+        display: flex;
+        left: 30px;
+    }
+    aside .nav-toggler.open{
+        /* left: 300px; */
+        left: 216px;
+    }
+    aside.open{
+        left: 0px;
+    }
+    
+}
